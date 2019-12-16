@@ -6,4 +6,6 @@ Homestead.yaml
 package.lock
 
 .DS_Store
+yarn.lock
+
 

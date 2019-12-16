@@ -13,8 +13,6 @@ namespace App\Traits;
 use App\Mail\ExceptionOccured;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
-use Watson\Validating\ValidationException;
 
 /**
  * Trait to support the controllers and general classes to trait the errors and
@@ -39,13 +37,6 @@ trait GenericLogErrors
     {
         Log::error($exception);
 
-        if ($message) return response()->json($message, $status);
-
-        if ($exception instanceof ValidationException)
-        {
-            return response()->json($exception->getErrors(), $status);
-        }
-
-        return response()->json($exception->getMessage(), $status);
+        return response()->json([$exception, 'message' => $message], $status);
     }
 }

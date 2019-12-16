@@ -39,16 +39,6 @@ trait GenericLogErrors
     {
         Log::error($exception);
 
-        if (method_exists($exception, "getContent"))
-        {
-            Mail::send(new ExceptionOccured($exception->getContent()));
-        }
-        else
-        {
-//            Mail::send(new ExceptionOccured($exception));
-        }
-
-
         if ($message) return response()->json($message, $status);
 
         if ($exception instanceof ValidationException)

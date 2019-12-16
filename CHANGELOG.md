@@ -1,4 +1,14 @@
-### removed the yarn.lock file and updated the git ignore file (HEAD -> docker)
+### created resource controllers (HEAD -> backend/resource-controllers)
+>Mon, 16 Dec 2019 19:44:58 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### removed the yarn.lock file and updated the git ignore file (origin/docker, docker)
 >Mon, 16 Dec 2019 17:51:18 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)
@@ -8,7 +18,7 @@
 
 
 
-### Docker branch updates (origin/docker)
+### Docker branch updates
 >Mon, 16 Dec 2019 17:48:43 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)
@@ -21,7 +31,7 @@
 
 
 
-### added the frontend and backend directory into the repository context (origin/master, master, dev, backend/controllers)
+### added the frontend and backend directory into the repository context (origin/master, master, backend/controllers)
 >Mon, 16 Dec 2019 17:10:19 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)

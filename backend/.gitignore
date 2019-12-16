@@ -3,7 +3,3 @@
 Homestead.json
 Homestead.yaml
 .env
-package.lock
-
-.DS_Store
-

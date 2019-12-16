@@ -1,4 +1,14 @@
-### removed unnecessary email trigger for errors (HEAD -> backend/resource-controllers)
+### added repository pattern (HEAD -> backend/repositories)
+>Mon, 16 Dec 2019 22:06:23 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### removed unnecessary email trigger for errors (origin/backend/resource-controllers, backend/resource-controllers)
 >Mon, 16 Dec 2019 19:47:33 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)
@@ -18,7 +28,7 @@
 
 
 
-### created resource controllers (origin/backend/resource-controllers)
+### created resource controllers
 >Mon, 16 Dec 2019 19:44:58 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)

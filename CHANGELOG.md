@@ -1,4 +1,14 @@
-### Docker branch updates (HEAD -> docker)
+### removed the yarn.lock file and updated the git ignore file (HEAD -> docker)
+>Mon, 16 Dec 2019 17:51:18 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### Docker branch updates (origin/docker)
 >Mon, 16 Dec 2019 17:48:43 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)

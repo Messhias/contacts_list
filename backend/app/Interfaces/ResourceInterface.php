@@ -48,7 +48,7 @@ interface ResourceInterface
      * Return the entity base on repository abstraction.
      *
      * @info
-     * The id is a string because by default we're using MongoDB database but you can
+     * The id is a string because by default we're using MySQL database but you can
      * remove the id type identifier and left the auto casting of PHP work for you.
      *
      * @param string $id
@@ -69,7 +69,7 @@ interface ResourceInterface
      * representation.
      *
      * @info
-     * The id is a string because by default we're using MongoDB database but you can
+     * The id is a string because by default we're using MySQL database but you can
      * remove the id type identifier and left the auto casting of PHP work for you.
      *
      * @param Request $request
@@ -83,7 +83,7 @@ interface ResourceInterface
      * Delete entity based on repository implementation
      *
      * @info
-     * The id is a string because by default we're using MongoDB database but you can
+     * The id is a string because by default we're using MySQL database but you can
      * remove the id type identifier and left the auto casting of PHP work for you.
      *
      * @param string $id

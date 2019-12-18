@@ -1,4 +1,14 @@
-### added repository pattern (HEAD -> backend/repositories)
+### created the base layout skeleton (HEAD -> frontend/skeleton)
+>Wed, 18 Dec 2019 21:30:30 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### added repository pattern (origin/backend/repositories, backend/repositories)
 >Mon, 16 Dec 2019 22:06:23 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)
@@ -38,6 +48,16 @@
 
 
 
+### Delete yarn.lock file (origin/master, master)
+>Mon, 16 Dec 2019 17:54:55 +0400
+
+>Author: Fabio William Conceição (messhias@gmail.com)
+
+>Commiter: GitHub (noreply@github.com)
+
+
+
+
 ### removed the yarn.lock file and updated the git ignore file (origin/docker, docker)
 >Mon, 16 Dec 2019 17:51:18 +0400
 
@@ -61,7 +81,7 @@
 
 
 
-### added the frontend and backend directory into the repository context (origin/master, master, backend/controllers)
+### added the frontend and backend directory into the repository context (backend/controllers)
 >Mon, 16 Dec 2019 17:10:19 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)

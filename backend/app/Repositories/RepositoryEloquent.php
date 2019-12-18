@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Interfaces\RepositoryInterface;
-use App\Models\User\Action as Log;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
@@ -43,13 +42,6 @@ abstract class RepositoryEloquent implements RepositoryInterface
     protected $obj;
 
     /**
-     * Logs object model representation.
-     *
-     * @var mixed
-     */
-    private $logs;
-
-    /**
      * Abstract set up model function.
      *
      * @return mixed
@@ -67,27 +59,6 @@ abstract class RepositoryEloquent implements RepositoryInterface
      * @return mixed
      */
     protected abstract function redis_key();
-
-
-    /**
-     * Returning the Log object model.
-     *
-     * @return mixed
-     */
-    public function getLogs(): Log
-    {
-        return $this->logs;
-    }
-
-    /**
-     * Set up the object Log model.
-     *
-     * @param mixed $logs
-     */
-    public function setLogs(Log $logs): void
-    {
-        $this->logs = $logs;
-    }
 
     /**
      * Returning the set up model.
@@ -189,14 +160,12 @@ abstract class RepositoryEloquent implements RepositoryInterface
      * RepositoryEloquent constructor.
      *
      * @param App $app
-     * @param Log $logs
      *
      * @throws Exception
      */
-    public function __construct(App $app, Log $logs)
+    public function __construct(App $app)
     {
         $this->setApp($app);
-        $this->setLogs($logs);
         $this->makeModel();
     }
 
@@ -243,9 +212,9 @@ abstract class RepositoryEloquent implements RepositoryInterface
     /**
      * Sync object model data.
      *
-     * @param array $data
+     * @param mixed $data
      */
-    protected function syncData(array $data)
+    protected function syncData($data)
     {
         if (!$this->obj) {
             return;
@@ -270,7 +239,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
     {
         $data = $this->getModel()->get();
 
-        $this->generate_logs($data);
+
 
         return $data;
     }
@@ -284,7 +253,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
     {
         $data = $this->model->get();
 
-        $this->generate_logs($data);
+
 
         return $data;
     }
@@ -305,8 +274,6 @@ abstract class RepositoryEloquent implements RepositoryInterface
             if (!$this->obj) return [];
         }
 
-        $this->generate_logs($this->obj, "get");
-
         return $this->obj;
     }
 
@@ -323,7 +290,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
     {
         $data = $this->model->where($filter)->get();
 
-        $this->generate_logs($data);
+
 
 
         return $data;
@@ -332,14 +299,12 @@ abstract class RepositoryEloquent implements RepositoryInterface
     /**
      * Create a new collection.
      *
-     * @param array $data
+     * @param mixed $data
      * @return bool|Model
      */
-    public function create(array $data = [])
+    public function create($data = [])
     {
         $this->obj = new $this->model;
-
-        $this->generate_logs($data, 'create');
 
         return $this->saveObj($data, true);
     }
@@ -361,8 +326,6 @@ abstract class RepositoryEloquent implements RepositoryInterface
         if (!empty($this->obj)) {
 
             $save_data = $this->saveObj($data);
-
-            $this->generate_logs($save_data, "update");
         }
 
         return $save_data;
@@ -371,11 +334,11 @@ abstract class RepositoryEloquent implements RepositoryInterface
     /**
      * Saving the object instance.
      *
-     * @param array $data
+     * @param mixed $data
      * @param bool $creating
      * @return bool|Model
      */
-    protected function saveObj(array $data, $creating = false)
+    protected function saveObj($data, $creating = false)
     {
         $this->syncData($data);
         $this->beforeSave($this->obj, $data, $creating);
@@ -394,11 +357,11 @@ abstract class RepositoryEloquent implements RepositoryInterface
      * Before save returning the object sync data of collections instances.
      *
      * @param Model $model
-     * @param array $data
+     * @param mixed $data
      * @param $creating
      * @return Model
      */
-    protected function beforeSave(Model &$model, array &$data, $creating)
+    protected function beforeSave(Model &$model, &$data, $creating)
     {
         return $model;
     }
@@ -429,8 +392,6 @@ abstract class RepositoryEloquent implements RepositoryInterface
         $obj = $this->find($id);
 
         if ($obj instanceof Model) $this->beforeDelete($obj);
-
-        $this->generate_logs($obj, "delete");
 
         if (!is_array($obj)) return $obj->delete();
 
@@ -471,8 +432,6 @@ abstract class RepositoryEloquent implements RepositoryInterface
     {
         $data = $this->model->where('active', true)->get();
 
-        $this->generate_logs($data, "get");
-
         return $data;
     }
 
@@ -485,8 +444,6 @@ abstract class RepositoryEloquent implements RepositoryInterface
     public function getByCode($code)
     {
         $data = $this->model->where('code', $code)->first();
-
-        $this->generate_logs($data, "get");
 
         return $data;
     }
@@ -503,8 +460,6 @@ abstract class RepositoryEloquent implements RepositoryInterface
     {
         $data = $this->model->where($filter)->get();
 
-        $this->generate_logs($data, "get");
-
         return $data;
     }
 
@@ -518,38 +473,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
     {
         $data = $this->model->where($filter)->first();
 
-        $this->generate_logs($data, "get");
-
         return $data;
-    }
-
-    /**
-     * Auto logs generate function.
-     *
-     * @param mixed  $data // could be an array or illuminate object.
-     * @param string $action
-     *
-     * @return void
-     */
-    public function generate_logs($data = [], $action = "get"): void
-    {
-        $this->getLogs()
-            ->create([
-                'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null,
-                'action_data' => json_encode($data),
-                'origin' => json_encode([
-                    'ip' => $this->getApp()['request']->ip(),
-                    'user_agent' => $this->getApp()['request']->server('HTTP_USER_AGENT'),
-                    'request_query' => json_encode($this->getApp()['request']->query())
-                ]),
-                'module' => $this->getModule(),
-                'url' => $this->getApp()['request']->fullUrl(),
-                "system_action" => isset($_SESSION['user_id']) ?? true,
-                "action" => $action,
-            ]);
-
-        // removing the user id from session.
-        if (isset($_SESSION['user_id'])) unset($_SESSION['user_id']);
     }
 
     /**
@@ -563,8 +487,6 @@ abstract class RepositoryEloquent implements RepositoryInterface
             ->first();
 
         if (!empty($data)) return [];
-
-        $this->generate_logs($data);
 
         return $data;
     }

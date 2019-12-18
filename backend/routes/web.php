@@ -14,3 +14,31 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+
+$router->group(['prefix' => "contacts"], function() use ($router) {
+    /**
+     * Return all the contacts with pagination.
+     */
+    $router->get("/", "ContactsController@default_pagination");
+
+    /**
+     * Create a new contact.
+     */
+    $router->post("/", "ContactsController@create");
+
+    /**
+     * Return a specific contact based on it's ID
+     */
+    $router->get("/{id}", "ContactsController@fnd");
+
+    /**
+     * Update the contact details.
+     */
+    $router->put("/{id}", "ContactsController@update");
+
+    /**
+     * Delete contact entry
+     */
+    $router->delete("/{id}", "ContactsController@delete");
+});

@@ -86,6 +86,8 @@ abstract class ResourceController implements ResourceInterface
     {
         $this->check_the_key_identifier($request);
 
+        info($request);
+
         try
         {
             return response()->json(

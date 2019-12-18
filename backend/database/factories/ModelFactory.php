@@ -17,3 +17,12 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->email,
     ];
 });
+
+
+$factory->define(\App\Models\Contact::class, function(\Faker\Generator $faker) {
+    return [
+        "name" => $faker->name,
+        "phone" => $faker->numerify("### ### ### ###"),
+        "description" => $faker->text(150),
+    ];
+});

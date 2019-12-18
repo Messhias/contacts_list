@@ -27,7 +27,7 @@ trait ResourceController
      *
      * @return JsonResponse
      */
-    public function check_the_key_identifier(Request $request): JsonResponse
+    public function check_the_key_identifier(Request $request)
     {
         if (!$request->has($this->getKeyIdentifier()))
             return response()->json("Wrong key identifier", 500);

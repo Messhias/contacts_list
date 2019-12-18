@@ -1,4 +1,14 @@
-### added repository pattern (HEAD -> backend/repositories)
+### created post commit, fixed problems with the mysql docker configuration file (HEAD -> backend/contacts)
+>Wed, 18 Dec 2019 08:58:19 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### added repository pattern (origin/backend/repositories, backend/repositories)
 >Mon, 16 Dec 2019 22:06:23 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)

@@ -1,4 +1,14 @@
-### created post commit, fixed problems with the mysql docker configuration file (HEAD -> backend/contacts)
+### finished the backend for contacts and created unit tests for testing the routes (HEAD -> backend/contacts)
+>Wed, 18 Dec 2019 20:32:06 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### created post commit, fixed problems with the mysql docker configuration file (origin/backend/contacts)
 >Wed, 18 Dec 2019 08:58:19 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)

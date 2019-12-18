@@ -12,7 +12,6 @@ namespace App\Traits;
 
 use App\Mail\ExceptionOccured;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Log;
 
 /**
  * Trait to support the controllers and general classes to trait the errors and
@@ -35,7 +34,7 @@ trait GenericLogErrors
      */
     public function log_error($exception, $message = null, int $status = 500): JsonResponse
     {
-        Log::error($exception);
+        error_log($exception);
 
         return response()->json([$exception, 'message' => $message], $status);
     }

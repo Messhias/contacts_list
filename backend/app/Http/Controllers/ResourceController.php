@@ -86,8 +86,6 @@ abstract class ResourceController implements ResourceInterface
     {
         $this->check_the_key_identifier($request);
 
-        info($request);
-
         try
         {
             return response()->json(
@@ -110,14 +108,13 @@ abstract class ResourceController implements ResourceInterface
     /**
      * Return the entity base on repository abstraction.
      *
-     * @param string $id
+     * @param  $id
      *
      * @return JsonResponse
      */
-    public function find(string $id = ""): JsonResponse
+    public function find($id): JsonResponse
     {
-        if (!is_string($id)) $id = (string) $id;
-
+        info($id);
         if (empty($id)) return response()->json(['message' => "Provide the identifier."], 404);
 
         try

@@ -30,7 +30,7 @@ $router->group(['prefix' => "contacts"], function() use ($router) {
     /**
      * Return a specific contact based on it's ID
      */
-    $router->get("/{id}", "ContactsController@fnd");
+    $router->get("/{id}", "ContactsController@find");
 
     /**
      * Update the contact details.

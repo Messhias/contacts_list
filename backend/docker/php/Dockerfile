@@ -8,16 +8,18 @@ ENV PHP_OPCACHE_VALIDATE_TIMESTAMPS="1" \
     PHP_OPCACHE_MAX_WASTED_PERCENTAGE="10" \
     PHP_OPCACHE_FILE_OVERRIDE=1
 
-RUN apt-get update -y
-RUN apt-get install -y zlib1g-dev \
-    libjpeg-dev \
-    libpng-dev \
-    libfreetype6-dev
-
-# Add Microsoft repo for Microsoft ODBC Driver 13 for Linux
 RUN apt-get update -y && apt-get install -y \
-    apt-transport-https \
-    && apt-get update
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libmcrypt-dev \
+        libpng-dev \
+        zlib1g-dev \
+        libxml2-dev \
+        libzip-dev \
+        libonig-dev \
+        graphviz \
+        zip
+
 
 # Install Dependencies
 RUN ACCEPT_EULA=Y apt-get install -y \
@@ -32,12 +34,15 @@ RUN ln -s /usr/lib/x86_64-linux-gnu/libsybdb.a /usr/lib/
 
 RUN docker-php-ext-install pdo_mysql
 
+
 #install some base extensions
-RUN apt-get install -y \
-        libzip-dev \
-        zip \
-  && docker-php-ext-configure zip \
-  && docker-php-ext-install zip
+RUN docker-php-ext-configure gd \
+    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install mysqli \
+    && docker-php-ext-install zip \
+    && docker-php-source delete
+
 
 
 # copying custom php.ini configurations into the container.

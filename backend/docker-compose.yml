@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   web:
-    container_name: web_contact_list
+    container_name: web_contacts_list
     restart: always
     image: nginx
     ports:
@@ -17,7 +17,7 @@ services:
       - php:php
 
   php:
-    container_name: php_contact_list
+    container_name: php_contacts_list
     restart: always
     build:
       context: ./
@@ -26,9 +26,10 @@ services:
       - ./:/code
     links:
       - database
+      - redis
 
   composer:
-    container_name: composer_contact_list
+    container_name: composer_contacts_list
     image: composer:latest
 #    command: install -vvv
     command: composer install --ignore-platform-reqs # run the installation inside the context container
@@ -52,3 +53,6 @@ services:
       - seccomp:unconfined
 
 
+  redis:
+    container_name: redis_contacts_list
+    image: redis:latest

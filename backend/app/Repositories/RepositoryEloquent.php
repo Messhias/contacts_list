@@ -214,7 +214,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
      *
      * @param mixed $data
      */
-    protected function syncData($data)
+    protected function syncData(array $data = [])
     {
         if (!$this->obj) {
             return;
@@ -237,11 +237,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
      */
     public function get()
     {
-        $data = $this->getModel()->get();
-
-
-
-        return $data;
+        return $this->getModel()->get();
     }
 
     /**
@@ -251,11 +247,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
      */
     public function all()
     {
-        $data = $this->model->get();
-
-
-
-        return $data;
+        return $this->model->get();
     }
 
     /**
@@ -299,10 +291,10 @@ abstract class RepositoryEloquent implements RepositoryInterface
     /**
      * Create a new collection.
      *
-     * @param mixed $data
+     * @param array $data
      * @return bool|Model
      */
-    public function create($data = [])
+    public function create(array $data = [])
     {
         $this->obj = new $this->model;
 
@@ -334,15 +326,14 @@ abstract class RepositoryEloquent implements RepositoryInterface
     /**
      * Saving the object instance.
      *
-     * @param mixed $data
+     * @param array $data
      * @param bool $creating
      * @return bool|Model
      */
-    protected function saveObj($data, $creating = false)
+    protected function saveObj(array $data = [], $creating = false)
     {
         $this->syncData($data);
         $this->beforeSave($this->obj, $data, $creating);
-
 
         if ($this->obj->save()) {
             $data =  $this->afterSave($this->obj, $data, $creating);
@@ -430,9 +421,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
      */
     public function active()
     {
-        $data = $this->model->where('active', true)->get();
-
-        return $data;
+        return $this->model->where('active', true)->get();
     }
 
     /**
@@ -443,9 +432,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
      */
     public function getByCode($code)
     {
-        $data = $this->model->where('code', $code)->first();
-
-        return $data;
+        return $this->model->where('code', $code)->first();
     }
 
     /**
@@ -458,9 +445,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
      */
     public function filter(array $filter)
     {
-        $data = $this->model->where($filter)->get();
-
-        return $data;
+        return $this->model->where($filter)->get();
     }
 
     /**
@@ -471,9 +456,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
      */
     public function filterOne(array $filter)
     {
-        $data = $this->model->where($filter)->first();
-
-        return $data;
+        return $this->model->where($filter)->first();
     }
 
     /**

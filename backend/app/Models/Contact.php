@@ -11,13 +11,15 @@
 namespace App\Models;
 
 
-class Contact extends Base
+use Illuminate\Database\Eloquent\Model;
+
+class Contact extends Model
 {
     protected $table = "contacts";
 
     protected $fillable = [
-       "name",
-       "phone",
-       "description",
+        "name",
+        "phone",
+        "description",
     ];
 }

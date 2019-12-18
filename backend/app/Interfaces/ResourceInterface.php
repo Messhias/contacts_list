@@ -86,9 +86,9 @@ interface ResourceInterface
      * The id is a string because by default we're using MySQL database but you can
      * remove the id type identifier and left the auto casting of PHP work for you.
      *
-     * @param string $id
+     * @param mixed $id
      *
      * @return JsonResponse
      */
-    public function delete(string $id = ""): JsonResponse;
+    public function delete($id): JsonResponse;
 }

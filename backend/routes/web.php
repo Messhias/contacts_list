@@ -20,7 +20,7 @@ $router->group(['prefix' => "contacts"], function() use ($router) {
     /**
      * Return all the contacts with pagination.
      */
-    $router->get("/", "ContactsController@default_pagination");
+    $router->get("/", "ContactsController@get");
 
     /**
      * Create a new contact.

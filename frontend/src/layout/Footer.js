@@ -26,7 +26,7 @@ export default () =>
         </Col>
         <Col>
             <span className={"text-center"}>
-                <Link to={"contacts/add"}>
+                <Link to={"/contacts/add"}>
                     <FontAwesomeIcon icon={faPlus} />
                     Add to favourites
                 </Link>

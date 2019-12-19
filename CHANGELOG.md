@@ -1,4 +1,24 @@
-### Created application default skeleton (HEAD -> frontend/layout)
+### removed unused components (HEAD -> frontend/pages-transitions)
+>Thu, 19 Dec 2019 08:27:44 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### created the router transitions (origin/frontend/pages-transitions)
+>Thu, 19 Dec 2019 08:23:56 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### Created application default skeleton (origin/frontend/layout, frontend/layout)
 >Thu, 19 Dec 2019 08:13:22 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)

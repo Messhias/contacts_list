@@ -5,10 +5,12 @@ import Pages from '../pages';
 
 // react router import
 import {
-    BrowserRouter as Router,
-    Switch,
     Route,
+    withRouter,
 } from "react-router-dom";
+
+// importing the animations transitions.
+import { AnimatedSwitch } from "./AnimatedSwitch";
 
 /**
  * The routes, here we set up our routes, if the users isn't logged in in the
@@ -33,32 +35,44 @@ function makeRoutes() {
     });
 }
 
-export default class Routes extends React.Component {
+// export default class Routes extends React.Component {
+//
+//     /**
+//      * Default router make component.
+//      *
+//      * @return {*}
+//      */
+//     static renderRoutes() {
+//         return (
+//             <Router
+//                 ref="route"
+//             >
+//                 <Switch>
+//                     {makeRoutes()}
+//                     <Route component={Pages.NotFound} />
+//                 </Switch>
+//             </Router>
+//         );
+//     }
+//
+//     /**
+//      * Default render function.
+//      *
+//      * @returns {*}
+//      */
+//     render() {
+//         return Routes.renderRoutes();
+//     }
+// }
 
-    /**
-     * Default router make component.
-     *
-     * @return {*}
-     */
-    static renderRoutes() {
-        return (
-            <Router
-                ref="route"
-            >
-                <Switch>
-                    {makeRoutes()}
-                    <Route component={Pages.NotFound} />
-                </Switch>
-            </Router>
-        );
-    }
+const Routes = withRouter(({ location }) => {
+    return (
+        <AnimatedSwitch location={location}>
+            {makeRoutes()}
+            <Route component={Pages.NotFound} />
+        </AnimatedSwitch>
+    );
+});
 
-    /**
-     * Default render function.
-     *
-     * @returns {*}
-     */
-    render() {
-        return Routes.renderRoutes();
-    }
-}
+export default Routes;
+

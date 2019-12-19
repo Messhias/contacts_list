@@ -1,7 +1,6 @@
 import Axios from 'axios';
 
 // eslint-disable-next-line
-import Env from './Env';
 import {getToken} from "./Functions";
 
 /**
@@ -17,7 +16,7 @@ import {getToken} from "./Functions";
  * @type {{baseURL: (never|*), withCredentials: boolean, timeout: number}}
  */
 const options = {
-    baseURL: Env.server(),
+    baseURL: "https://localhost/",
     withCredentials: false,
     headers: {
         'Content-Type': 'application/json',

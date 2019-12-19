@@ -6,4 +6,4 @@ import Request from '../../utils/Request';
  * @request
  * @return {Promise<AxiosResponse<T>>}
  */
-export default () => Request.get("contacts");
+export default () => Request.get("/contacts");

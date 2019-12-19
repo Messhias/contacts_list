@@ -1,4 +1,14 @@
-### removed unused components (HEAD -> frontend/pages-transitions)
+### updates (HEAD -> feature/contacts)
+>Thu, 19 Dec 2019 21:15:28 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### removed unused components (origin/frontend/pages-transitions, frontend/pages-transitions)
 >Thu, 19 Dec 2019 08:27:44 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)
@@ -8,7 +18,7 @@
 
 
 
-### created the router transitions (origin/frontend/pages-transitions)
+### created the router transitions
 >Thu, 19 Dec 2019 08:23:56 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)

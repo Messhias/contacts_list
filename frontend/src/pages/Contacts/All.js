@@ -4,10 +4,19 @@ import React from "react";
 import { Accordion, Card, Button } from "react-bootstrap";
 import BaseLayout from '../../layout';
 
+// importing the default
+import { connect } from "react-redux";
+
 // default class holder.
 import AbstractComponentClass from "../../utils/AbstractComponentClass";
+import {get_contacts} from "../../actions/contacts";
 
-export default class AllContacts extends AbstractComponentClass<this> {
+class AllContacts extends AbstractComponentClass<this> {
+    constructor(props) {
+        super(props);
+
+        this.props.get_contacts();
+    }
 
     render() {
         return (
@@ -38,3 +47,31 @@ export default class AllContacts extends AbstractComponentClass<this> {
         )
     }
 }
+
+/**
+ * Mapping the state to props.
+ *
+ * @param state
+ * @returns ReduxObject
+ */
+const mapStateToProps = state  => {
+    const {
+        Contacts = []
+    } = state;
+
+    return {
+        ...Contacts,
+    };
+};
+
+/**
+ * Mapping the functions to props.
+ *
+ * @param dispatch
+ * @returns {{get_cities: (function(): *), delete_city: (function(*=): *)}}
+ */
+const mapDispatchToProps = dispatch => ({
+    get_contacts: () => dispatch(get_contacts())
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(AllContacts);

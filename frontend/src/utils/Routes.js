@@ -5,8 +5,6 @@ import Pages from '../pages';
 
 // react router import
 import {
-    BrowserRouter as Router,
-    Switch,
     Route,
     withRouter,
 } from "react-router-dom";

@@ -65,6 +65,12 @@ $app->singleton(
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
 
+/**
+ * Set up the CORS middleware.
+ */
+$app->middleware([
+    \App\Http\Middleware\CorsMiddleware::class,
+]);
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers

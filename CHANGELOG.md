@@ -1,4 +1,14 @@
-### created the base layout skeleton (HEAD -> frontend/skeleton)
+### Created application default skeleton (HEAD -> frontend/layout)
+>Thu, 19 Dec 2019 08:13:22 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### created the base layout skeleton (origin/frontend/skeleton, frontend/skeleton)
 >Wed, 18 Dec 2019 21:30:30 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)

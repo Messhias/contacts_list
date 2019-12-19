@@ -88,10 +88,13 @@ abstract class ResourceController implements ResourceInterface
 
         try
         {
-            return response()->json(
-                $this->getRepository()->create(
-                    $request->input($this->getKeyIdentifier())
-                ),
+            return response()->json([
+                "data" => $this->getRepository()->create(
+                    $request->input($this->getKeyIdentifier())),
+                "success" => true,
+                "code" => 201,
+                "message" => "Added"
+                ],
                 201
             );
         }
@@ -108,19 +111,23 @@ abstract class ResourceController implements ResourceInterface
     /**
      * Return the entity base on repository abstraction.
      *
-     * @param string $id
+     * @param  $id
      *
      * @return JsonResponse
      */
-    public function find(string $id = ""): JsonResponse
+    public function find($id): JsonResponse
     {
-        if (!is_string($id)) $id = (string) $id;
-
+        info($id);
         if (empty($id)) return response()->json(['message' => "Provide the identifier."], 404);
 
         try
         {
-            return response()->json($this->getRepository()->find($id), 200);
+            return response()->json([
+                "message" => "Found",
+                "data" => $this->getRepository()->find($id),
+                "success" => true,
+                "code" => 200
+            ], 200);
         }
         catch (GenericException $exception)
         {
@@ -141,8 +148,14 @@ abstract class ResourceController implements ResourceInterface
     {
         try
         {
-            return response()->json(
-                unserialize(str_replace(array('NAN;','INF;'),'0;',serialize($this->getRepository()->get())))
+            return response()->json([
+                    "data" => unserialize(
+                        str_replace(array('NAN;','INF;'),'0;',serialize($this->getRepository()->get()))
+                    ),
+                    "success" => true,
+                    "code" => 200,
+                    "message" => "Entries found"
+                ]
                 ,
                 200
             );
@@ -175,11 +188,14 @@ abstract class ResourceController implements ResourceInterface
         try
         {
             return response()
-                ->json(
-                    $this->getRepository()->update(
+                ->json([
+                    "data" => $this->getRepository()->update(
                         $id,
-                        $request->input($this->getKeyIdentifier())
-                ),
+                        $request->input($this->getKeyIdentifier())),
+                    "success" => true,
+                    "code" => 200,
+                    "message" => "Information updated",
+                ],
         200
             );
         }
@@ -196,17 +212,22 @@ abstract class ResourceController implements ResourceInterface
     /**
      * Delete entity based on repository implementation
      *
-     * @param string $id
+     * @param mixed $id
      *
      * @return JsonResponse
      */
-    public function delete(string $id = ""): JsonResponse
+    public function delete($id): JsonResponse
     {
         if (!is_string($id)) $id = (string) $id;
 
         try
         {
-            return response()->json($this->getRepository()->delete($id), 200);
+            return response()->json([
+                "data" => $this->getRepository()->delete($id),
+                "success" => true,
+                "code" => 200,
+                "message" => "Entry deleted",
+            ], 200);
         }
         catch (GenericException $exception)
         {
@@ -231,12 +252,13 @@ abstract class ResourceController implements ResourceInterface
 
         try
         {
-            return response()->json(
-                $this->getRepository()->login(
-                    $request->input($this->getKeyIdentifier())
-                ),
-                200
-            );
+            return response()->json([
+                "data" => $this->getRepository()->login(
+                $request->input($this->getKeyIdentifier())),
+                "message" => "Logged",
+                "code" => 200,
+                "success" => true,
+            ], 200);
         }
         catch (GenericException $exception)
         {
@@ -262,13 +284,15 @@ abstract class ResourceController implements ResourceInterface
         try
         {
             return response()
-                ->json(
-                    $this->getRepository()
+                ->json([
+                    "data" => $this->getRepository()
                         ->register(
                             $request->input($this->getKeyIdentifier())
                         ),
-                    201
-                );
+                    "success" => true,
+                    "code" => 201,
+                    "message" => "Registration complete",
+                ], 201);
         }
         catch (ValidationException $exception)
         {
@@ -292,10 +316,9 @@ abstract class ResourceController implements ResourceInterface
     {
         try
         {
-
             return response()->json(
-
-                unserialize(
+                [
+                    "data" => unserialize(
                     str_replace(
                         array('NAN;','INF;'),'0;',
                         serialize(
@@ -303,10 +326,11 @@ abstract class ResourceController implements ResourceInterface
                                 ->get_with_paginate($user_id))
 
                         )
-                    )
-                ,
-                200
-            );
+                    ),
+                    "success" => true,
+                    "code" => 200,
+                    "message" => "Results back",
+                ], 200);
         }
         catch (\Exception $exception)
         {
@@ -324,10 +348,13 @@ abstract class ResourceController implements ResourceInterface
         try
         {
             return response()
-                ->json(
-                    $this->getRepository()
-                    ->default_pagination()
-                );
+                ->json([
+                    "data" => $this->getRepository()
+                        ->default_pagination(),
+                    "success" => true,
+                    "code" => 200,
+                    "message" => "Results found",
+                ]);
         }
         catch (\Exception $exception)
         {

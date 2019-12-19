@@ -1,8 +1,8 @@
-version: '3.1'
+version: '3.4'
 
 services:
   web:
-    container_name: web_contact_list
+    container_name: web_contacts_list
     restart: always
     image: nginx
     ports:
@@ -15,50 +15,44 @@ services:
       - ./docker/nginx/my-site.com.key:/etc/nginx/my-site.com.key # SSL Key
     links:
       - php:php
-    networks:
-      - api_contact_list
 
   php:
-    container_name: php_contact_list
+    container_name: php_contacts_list
     restart: always
     build:
       context: ./
       dockerfile: ./docker/php/Dockerfile
     volumes:
       - ./:/code
-    depends_on:
+    links:
       - database
-    networks:
-      - api_contact_list
+      - redis
 
   composer:
-    container_name: composer_contact_list
+    container_name: composer_contacts_list
     image: composer:latest
 #    command: install -vvv
     command: composer install --ignore-platform-reqs # run the installation inside the context container
     volumes:
       - ./:/app
-    networks:
-      - api_contact_list
 
   # pulling the database.
   database:
     container_name: database
-    restart: always
     image: mysql:latest
     volumes:
-      - ./mysql:/var/lib/mysql
+      - /var/lib/mysql
     ports:
       - 3306:3306
-    networks:
-      - api_contact_list
     environment:
-      MYSQL_ROOT_PASSWORD: docker
-      MYSQL_DATABASE: docker
-      MYSQL_USER: docker
-      MYSQL_PASSWORD: docker
+      - MYSQL_USER=docker
+      - MYSQL_DATABASE=docker
+      - MYSQL_ROOT_PASSWORD=docker
+      - MYSQL_PASSWORD=docker
+    security_opt:
+      - seccomp:unconfined
 
 
-networks:
-  api_contact_list:
-    driver: bridge
+  redis:
+    container_name: redis_contacts_list
+    image: redis:latest

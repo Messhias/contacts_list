@@ -1,4 +1,4 @@
-### repo updates (HEAD -> feature/contacts)
+### repo updates
 >Thu, 19 Dec 2019 21:16:13 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)
@@ -50,6 +50,36 @@
 
 ### created the base layout skeleton (origin/frontend/skeleton, frontend/skeleton)
 >Wed, 18 Dec 2019 21:30:30 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### updated resource controller to standards of Open API world (origin/backend/contacts, backend/contacts)
+>Wed, 18 Dec 2019 20:43:44 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### finished the backend for contacts and created unit tests for testing the routes
+>Wed, 18 Dec 2019 20:32:06 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### created post commit, fixed problems with the mysql docker configuration file
+>Wed, 18 Dec 2019 08:58:19 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)
 

@@ -16,7 +16,9 @@ export default props => (
     <Container fluid>
         <Header  {...props} />
         <Row>
-            <Col>
+            <Col
+                className={"default-container"}
+            >
                 <span className={"text-center"}>
                     Page not found
                 </span>

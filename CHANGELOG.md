@@ -1,4 +1,44 @@
-### removed unused components (HEAD -> frontend/pages-transitions)
+### start scripts updates (HEAD -> feature/contacts)
+>Fri, 20 Dec 2019 15:58:25 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### - Created .env.example file. - Fixed abstract controllers to have custom response messages. (origin/feature/contacts)
+>Fri, 20 Dec 2019 15:56:50 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### repo updates
+>Thu, 19 Dec 2019 21:16:13 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### updates
+>Thu, 19 Dec 2019 21:15:28 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### removed unused components (origin/frontend/pages-transitions, frontend/pages-transitions)
 >Thu, 19 Dec 2019 08:27:44 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)
@@ -8,7 +48,7 @@
 
 
 
-### created the router transitions (origin/frontend/pages-transitions)
+### created the router transitions
 >Thu, 19 Dec 2019 08:23:56 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)
@@ -30,6 +70,36 @@
 
 ### created the base layout skeleton (origin/frontend/skeleton, frontend/skeleton)
 >Wed, 18 Dec 2019 21:30:30 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### updated resource controller to standards of Open API world (origin/backend/contacts, backend/contacts)
+>Wed, 18 Dec 2019 20:43:44 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### finished the backend for contacts and created unit tests for testing the routes
+>Wed, 18 Dec 2019 20:32:06 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
+### created post commit, fixed problems with the mysql docker configuration file
+>Wed, 18 Dec 2019 08:58:19 +0400
 
 >Author: Fabio William Conceição (fabio@viame.ae)
 

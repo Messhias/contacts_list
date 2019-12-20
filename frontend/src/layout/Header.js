@@ -17,35 +17,45 @@ import { Link } from 'react-router-dom';
  * @returns {*}
  */
 function mountHeaders(props = false) {
-    if (props) {
-        console.log(props);
-        if (props.history && props.history.path !== "/") {
+    if (props.props) {
+        if (props.props.history && props.props.location.pathname !== "/") {
             return (
-                <Row>
-                    <Col onClick={() => props.history.goBack()}>
-                        <FontAwesomeIcon icon={faArrowAltCircleLeft} />{" "} Back
-                    </Col>
-                    <Col>
-                        <span className={"text-center"}>
-                            Contacts list
-                        </span>
-                    </Col>
-                    <Col>
-                        <span className={"pull-right"}>
-                            <Link to={"/contacts/add"}>
-                                <FontAwesomeIcon icon={faPlus} /> {" "} Add to favorites
-                            </Link>
-                        </span>
-                    </Col>
-                </Row>
+                <div
+                    className={"container-header"}
+                >
+                    <Row>
+                        <Col>
+                            <span onClick={props.props.history.goBack}>
+                                <FontAwesomeIcon icon={faArrowAltCircleLeft} />{"  "} Back
+                            </span>
+                        </Col>
+                        <Col>
+                            <span className={"text-center"}>
+                                <Link to={"/"}>
+                                    Contacts list
+                                </Link>
+                            </span>
+                        </Col>
+                        <Col>
+                            <span className={"pull-right"}>
+                                <Link to={"/contacts/add"}>
+                                    <FontAwesomeIcon icon={faPlus} /> {"  "} Add to favorites
+                                </Link>
+                            </span>
+                        </Col>
+                    </Row>
+                </div>
             );
         }
     }
 
 
     return (
-        <Row>
-            <Col>
+        <div
+            className={"container-header"}
+        >
+            <Row>
+                <Col>
                 <span className={"text-center"}>
                     <Link
                         to={"/"}
@@ -53,8 +63,9 @@ function mountHeaders(props = false) {
                         Contacts list
                     </Link>
                 </span>
-            </Col>
-        </Row>
+                </Col>
+            </Row>
+        </div>
     );
 }
 

@@ -19,8 +19,8 @@ export default class AbstractComponentClass extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            redirect_page: "",
-        }
+            redirect_page: "/",
+        };
 
         this.pagination = paginationFactory();
     };
@@ -53,27 +53,31 @@ export default class AbstractComponentClass extends React.Component {
     getSnapshotBeforeUpdate(prevProps, prevState) {
         if (prevProps !== this.props) {
             const {
-                    response_status = 0,
+                    code = 0,
                     edited = false,
                 } = this.props,
                 {
-                    redirect_page = "",
+                    redirect_page = "/",
                 } = this.state;
 
-
-            if (response_status === 201 ) {
-                this.props.history.push(redirect_page);
+            if (code === 201 ) {
+                this.props.history.goBack();
+                window.scrollTo(0, 0);
+                return true;
             }
 
             if (edited) {
                 if (this.props.history.location.pathname === redirect_page) {
                     this.componentSpread(this.props);
+                    return true;
                 } else {
                     this.props.history.push(redirect_page);
+                    return true;
                 }
             }
 
             this.setState({ ...this.props });
+            return true;
         }
         return null;
     }

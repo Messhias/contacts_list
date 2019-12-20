@@ -15,21 +15,27 @@ import { faPlus, faUser } from "@fortawesome/free-solid-svg-icons";
  * @returns {*}
  */
 export default () =>
-    <Row>
-        <Col>
-            <span className={"text-center"}>
-                <Link to={"/"}>
-                    <FontAwesomeIcon icon={faUser} />
-                    Contacts
-                </Link>
-            </span>
-        </Col>
-        <Col>
-            <span className={"text-center"}>
-                <Link to={"/contacts/add"}>
-                    <FontAwesomeIcon icon={faPlus} />
-                    Add to favourites
-                </Link>
-            </span>
-        </Col>
-    </Row>
+    <footer>
+        <Row>
+            <Col
+                className={"left-column"}
+            >
+                <span className={"text-center"}>
+                    <Link to={"/"}>
+                        <FontAwesomeIcon icon={faUser} /> {"  "}
+                        Contacts
+                    </Link>
+                </span>
+            </Col>
+            <Col
+                className={'right-column'}
+            >
+                <span className={"text-center"}>
+                    <Link to={"/contacts/add"}>
+                        <FontAwesomeIcon icon={faPlus} /> {"  "}
+                        Add to favourites
+                    </Link>
+                </span>
+            </Col>
+        </Row>
+    </footer>

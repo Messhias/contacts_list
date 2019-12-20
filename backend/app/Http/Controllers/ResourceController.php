@@ -56,6 +56,41 @@ abstract class ResourceController implements ResourceInterface
     abstract protected function getPluralIdentifier();
 
     /**
+     * Default found message.
+     *
+     * @return string
+     */
+    abstract protected function foundMessage(): string;
+
+    /**
+     * Default create message.
+     *
+     * @return string
+     */
+    abstract protected function createMessage(): string;
+
+    /**
+     * Default update message.
+     *
+     * @return string
+     */
+    abstract protected function updateMessage(): string;
+
+    /**
+     * Default deleted message.
+     *
+     * @return string
+     */
+    abstract protected function deletedMessage(): string;
+
+    /**
+     * Default generic message.
+     *
+     * @return string
+     */
+    abstract protected function genericMessage(): string;
+
+    /**
      * Set up the repository into the abstract context.
      *
      * @param $repository
@@ -93,7 +128,7 @@ abstract class ResourceController implements ResourceInterface
                     $request->input($this->getKeyIdentifier())),
                 "success" => true,
                 "code" => 201,
-                "message" => "Added"
+                "message" => $this->createMessage()
                 ],
                 201
             );
@@ -117,13 +152,12 @@ abstract class ResourceController implements ResourceInterface
      */
     public function find($id): JsonResponse
     {
-        info($id);
         if (empty($id)) return response()->json(['message' => "Provide the identifier."], 404);
 
         try
         {
             return response()->json([
-                "message" => "Found",
+                "message" => $this->foundMessage(),
                 "data" => $this->getRepository()->find($id),
                 "success" => true,
                 "code" => 200
@@ -154,7 +188,7 @@ abstract class ResourceController implements ResourceInterface
                     ),
                     "success" => true,
                     "code" => 200,
-                    "message" => "Entries found"
+                    "message" => $this->foundMessage()
                 ]
                 ,
                 200
@@ -194,7 +228,7 @@ abstract class ResourceController implements ResourceInterface
                         $request->input($this->getKeyIdentifier())),
                     "success" => true,
                     "code" => 200,
-                    "message" => "Information updated",
+                    "message" => $this->updateMessage(),
                 ],
         200
             );
@@ -226,7 +260,7 @@ abstract class ResourceController implements ResourceInterface
                 "data" => $this->getRepository()->delete($id),
                 "success" => true,
                 "code" => 200,
-                "message" => "Entry deleted",
+                "message" => $this->deletedMessage(),
             ], 200);
         }
         catch (GenericException $exception)
@@ -255,7 +289,7 @@ abstract class ResourceController implements ResourceInterface
             return response()->json([
                 "data" => $this->getRepository()->login(
                 $request->input($this->getKeyIdentifier())),
-                "message" => "Logged",
+                "message" => $this->genericMessage(),
                 "code" => 200,
                 "success" => true,
             ], 200);
@@ -329,7 +363,7 @@ abstract class ResourceController implements ResourceInterface
                     ),
                     "success" => true,
                     "code" => 200,
-                    "message" => "Results back",
+                    "message" => $this->foundMessage(),
                 ], 200);
         }
         catch (\Exception $exception)
@@ -353,7 +387,7 @@ abstract class ResourceController implements ResourceInterface
                         ->default_pagination(),
                     "success" => true,
                     "code" => 200,
-                    "message" => "Results found",
+                    "message" => $this->foundMessage(),
                 ]);
         }
         catch (\Exception $exception)

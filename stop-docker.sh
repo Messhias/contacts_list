@@ -1,2 +1,2 @@
 cd backend && \
-docker-compose down
+docker-compose stop

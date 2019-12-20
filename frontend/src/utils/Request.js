@@ -16,7 +16,7 @@ import {getToken} from "./Functions";
  * @type {{baseURL: (never|*), withCredentials: boolean, timeout: number}}
  */
 const options = {
-    baseURL: "https://localhost/",
+    baseURL: "http://localhost/",
     withCredentials: false,
     headers: {
         'Content-Type': 'application/json',

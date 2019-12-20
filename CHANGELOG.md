@@ -1,3 +1,13 @@
+### - Created .env.example file. - Fixed abstract controllers to have custom response messages. (HEAD -> feature/contacts)
+>Fri, 20 Dec 2019 15:56:50 +0400
+
+>Author: Fabio William Conceição (fabio@viame.ae)
+
+>Commiter: Fabio William Conceição (fabio@viame.ae)
+
+
+
+
 ### repo updates
 >Thu, 19 Dec 2019 21:16:13 +0400
 

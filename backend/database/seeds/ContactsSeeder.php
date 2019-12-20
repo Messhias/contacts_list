@@ -11,6 +11,6 @@ class ContactsSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Contact::class, 10)->create();
+        factory(\App\Models\Contact::class, rand(10, 40))->create();
     }
 }

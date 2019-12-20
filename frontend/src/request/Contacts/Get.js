@@ -1,7 +1,7 @@
 import Request from '../../utils/Request';
 
 /**
- * Getting all the taxes.
+ * Getting all the contacts.
  *
  * @request
  * @return {Promise<AxiosResponse<T>>}

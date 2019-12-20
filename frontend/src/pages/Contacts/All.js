@@ -1,47 +1,31 @@
 import React from "react";
 
 // importing default components.
-import { Accordion, Card, Button } from "react-bootstrap";
+import { Accordion } from "react-bootstrap";
 import BaseLayout from '../../layout';
+import ContactsComponent from '../../components';
 
-// importing the default
-import { connect } from "react-redux";
 
 // default class holder.
 import AbstractComponentClass from "../../utils/AbstractComponentClass";
+
+// importing the default redux functions
+import { connect } from "react-redux";
 import {get_contacts} from "../../actions/contacts";
 
 class AllContacts extends AbstractComponentClass<this> {
-    constructor(props) {
-        super(props);
 
+    componentDidMount(): void {
         this.props.get_contacts();
     }
 
     render() {
         return (
             <BaseLayout {...this}>
-                <Accordion>
-                    <Card>
-                        <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                Click me!
-                            </Accordion.Toggle>
-                        </Card.Header>
-                        <Accordion.Collapse eventKey="0">
-                            <Card.Body>Hello! I'm the body</Card.Body>
-                        </Accordion.Collapse>
-                    </Card>
-                    <Card>
-                        <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                                Click me!
-                            </Accordion.Toggle>
-                        </Card.Header>
-                        <Accordion.Collapse eventKey="1">
-                            <Card.Body>Hello! I'm another body</Card.Body>
-                        </Accordion.Collapse>
-                    </Card>
+                <Accordion
+                    className={"accordion-container"}
+                >
+                    <ContactsComponent.Contacts.List {...this.state} />
                 </Accordion>
             </BaseLayout>
         )

@@ -51,4 +51,44 @@ class ContactsController extends ResourceController
     {
         $this->setRepository($repository);
     }
+
+    /**
+     * @inheritDoc
+     */
+    protected function foundMessage (): string
+    {
+        return "Contact(s) found.";
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function createMessage (): string
+    {
+        return "Contact created.";
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function updateMessage (): string
+    {
+        return "Contact updated.";
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function deletedMessage (): string
+    {
+        return "Contact deleted.";
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function genericMessage (): string
+    {
+        return "Action complete.";
+    }
 }

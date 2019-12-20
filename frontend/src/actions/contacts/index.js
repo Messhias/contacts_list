@@ -12,7 +12,10 @@ export const get_contacts = () => dispatch => {
         .then(response => {
             dispatch({
                 type: GET_CONTACTS,
-                ...response.data
+                ...response.data,
+                code: 200,
+                edited: false,
+                deleted: false,
             });
         })
         .catch(error => console.error(error));
@@ -30,7 +33,10 @@ export const find_contact = (id = false) => dispatch => {
             .find(id)
             .then(response => dispatch({
                 type: FIND_CONTACTS,
-                ...response.data
+                ...response.data,
+                ...response.data.data,
+                edited: false,
+                deleted: false,
             }))
             .catch(error => console.error(error));
     }
@@ -50,6 +56,8 @@ export const update_contact = (id = false, contacts = false) => dispatch => {
             .then(response => dispatch({
                 type: UPDATE_CONTACTS,
                 ...response.data,
+                edited: true,
+                deleted: false,
             }))
             .catch(error => console.error(error));
     }
@@ -68,6 +76,8 @@ export const create = (contacts = false) => dispatch => {
             .then(response => dispatch({
                 type: CREATE_CONTACTS,
                 ...response.data,
+                edited: false,
+                deleted: false,
             }))
             .catch(error => console.error(error));
     }
@@ -83,10 +93,15 @@ export const delete_contact = (id = false) => dispatch => {
     if (id) {
         new Contacts()
             .delete(id)
-            .then(response => dispatch({
-                type: DELETE_CONTACTS,
-                deleted: response.data,
-            }))
+            .then(response => {
+                dispatch({
+                    type: DELETE_CONTACTS,
+                    ...response.data,
+                    edited: false,
+                    deleted: true,
+                });
+                dispatch(get_contacts());
+            })
             .catch(error => console.error(error));
     }
 };

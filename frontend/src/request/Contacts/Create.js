@@ -2,7 +2,7 @@ import Request from '../../utils/Request';
 import {treatRequest} from "../../utils/Functions";
 
 /**
- * Requesting to add taxes on system.
+ * Requesting to add contacts on system.
  *
  * @request
  * @param contacts

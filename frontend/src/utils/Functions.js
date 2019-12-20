@@ -1,5 +1,5 @@
 import React from "react";
-import {Button} from "react-bootstrap";
+import {Button, FormGroup} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlusCircle} from "@fortawesome/free-solid-svg-icons";
 
@@ -121,9 +121,11 @@ export function generic_on_change(event, component) {
 export function spread_state(component = false, state = false) {
     if (component) {
         if (state) {
-            component.setState({
-                ...state
-            });
+            if (component.prevState !== state) {
+                component.setState({
+                    ...state
+                });
+            }
         }
     }
 }
@@ -258,24 +260,28 @@ export function render_default_form_buttons(
 ) {
     if (edit_mode) {
         return (
-            <Button
-                type={'submit'}
-                className={'btn btn-sm btn-success'}
-            >
-                <FontAwesomeIcon icon={faEdit} /> {" "}
-                { edit_title }
-            </Button>
+            <FormGroup>
+                <Button
+                    type={'submit'}
+                    className={'btn btn-sm btn-success'}
+                >
+                    <FontAwesomeIcon icon={faEdit} /> {" "}
+                    { edit_title }
+                </Button>
+            </FormGroup>
         )
     }
 
     return (
-        <Button
-            type={'submit'}
-            className={'btn btn-sm btn-success'}
-        >
-            <FontAwesomeIcon icon={faPlusCircle} /> {" "}
-            { add_title }
-        </Button>
+        <FormGroup>
+            <Button
+                type={'submit'}
+                className={'btn btn-sm btn-success'}
+            >
+                <FontAwesomeIcon icon={faPlusCircle} /> {" "}
+                { add_title }
+            </Button>
+        </FormGroup>
     );
 }
 
@@ -286,7 +292,7 @@ export function render_default_form_buttons(
  * @param action
  * @returns {{}}
  */
-export function resolve_redux_state(state = null, action = null) {
+export function resolve_redux_state(state = false, action = false) {
     if (action && state) {
         delete action.type;
 

@@ -21,6 +21,8 @@ import { AnimatedSwitch } from "./AnimatedSwitch";
 function makeRoutes() {
     const paths = {
         "/": Pages.Contacts.All,
+        "/contacts/add": Pages.Contacts.Add,
+        "/contacts/edit/:id": Pages.Contacts.Edit,
     };
 
     return Object.keys(paths).map(path => {
@@ -34,36 +36,6 @@ function makeRoutes() {
         );
     });
 }
-
-// export default class Routes extends React.Component {
-//
-//     /**
-//      * Default router make component.
-//      *
-//      * @return {*}
-//      */
-//     static renderRoutes() {
-//         return (
-//             <Router
-//                 ref="route"
-//             >
-//                 <Switch>
-//                     {makeRoutes()}
-//                     <Route component={Pages.NotFound} />
-//                 </Switch>
-//             </Router>
-//         );
-//     }
-//
-//     /**
-//      * Default render function.
-//      *
-//      * @returns {*}
-//      */
-//     render() {
-//         return Routes.renderRoutes();
-//     }
-// }
 
 const Routes = withRouter(({ location }) => {
     return (

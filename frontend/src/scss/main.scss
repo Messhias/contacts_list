@@ -1,0 +1,61 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.pull-right {
+    float: right;
+}
+
+.text-center {
+    display:table;
+    margin:0 auto;
+}
+
+body {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100vw;
+}
+.container-header {
+    background: white;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    span {
+        color: blue;
+        cursor: pointer;
+    }
+}
+
+.accordion-container {
+    margin-top: 65px;
+    padding-bottom: 90px;
+    padding-top: 0;
+}
+
+footer {
+    .left-column {
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        z-index: 9;
+        width: 50%;
+        left: 0;
+        background: white;
+    }
+
+    .right-column {
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        z-index: 9;
+        width: 50%;
+        right: 0;
+        background: white;
+    }
+}
+
+.default-container {
+    margin-top: 75px;
+}
